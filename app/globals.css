@@ -3,19 +3,99 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #f1f5f9;
   --foreground: #171717;
+  --navy-900: #0A1835;
+  --orange-500: #FF6B1A;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #090909;
     --foreground: #ededed;
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--navy-900);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-500);
+}
+
+/* Smooth transitions */
+button, a, .transition-all {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Image improvements */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Better text rendering */
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 700;
+}
+
+/* Accessibility improvements */
+h1, .text-high-contrast {
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  letter-spacing: 0.01em;
+}
+
+.leading-relaxed {
+  line-height: 1.8;
+}
+
+/* Button focus states */
+button:focus, a:focus {
+  outline: 2px solid var(--orange-500);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background: var(--orange-500);
+  color: white;
+}
+
+@layer utilities {
+  .text-shadow-slate {
+    text-shadow: 0 0 10px rgb(71 85 105 / 0.9),  /* Darker slate-600 */
+                0 0 20px rgb(51 65 85 / 0.8),     /* Darker slate-700 */
+                0 0 30px rgb(30 41 59 / 0.7),     /* Darker slate-800 */
+                2px 2px 4px rgb(15 23 42 / 0.9);  /* Very dark slate-900 with offset */
+  }
 }
